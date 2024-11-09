@@ -18,7 +18,7 @@ import { CalendarIcon } from 'lucide-react'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 interface TaskFormProps {
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  onSubmit: (task: Partial<Task>) => void
   editingTask: Task | null
 }
 
@@ -30,11 +30,21 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, editingTask }) => 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    if (date) {
-      formData.set('dueDate', format(date, 'yyyy-MM-dd'))
+    
+    const taskData: Partial<Task> = {
+      title: formData.get('title') as string,
+      description: formData.get('description') as string,
+      priority: parseInt(formData.get('priority') as string) as Task['priority'],
+      completed: false,
     }
-    onSubmit(e)
+
+    if (date) {
+      taskData.dueDate = format(date, 'yyyy-MM-dd')
+    }
+
+    onSubmit(taskData)
   }
+  
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

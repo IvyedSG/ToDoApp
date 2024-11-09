@@ -54,26 +54,24 @@ export default function TaskManager() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    
-    const taskData = {
-      title: formData.get('title') as string,
-      description: formData.get('description') as string,
-      dueDate: formData.get('dueDate') as string,
-      priority: parseInt(formData.get('priority') as string) as Task['priority'],
-      completed: false,
-    }
+  const handleOpenDialog = (task: Task | null = null) => {
+    setEditingTask(task)
+    setIsDialogOpen(true)
+  }
 
-    if (editingTask) {
-      updateTask({ ...taskData, id: editingTask.id, completed: editingTask.completed })
-    } else {
-      addTask(taskData)
-    }
-    
+  const handleCloseDialog = () => {
     setEditingTask(null)
     setIsDialogOpen(false)
+  }
+
+  const handleSubmit = (taskData: Partial<Task>) => {
+    if (editingTask) {
+      updateTask({ ...editingTask, ...taskData })
+    } else {
+      addTask(taskData as Task)
+    }
+    
+    handleCloseDialog()
   }
 
   const selectRandomTask = () => {
@@ -111,7 +109,7 @@ export default function TaskManager() {
           setSearchQuery={setSearchQuery}
           filter={filter}
           setFilter={setFilter}
-          onAddTask={() => setIsDialogOpen(true)}
+          onAddTask={() => handleOpenDialog()}
           onSelectRandomTask={selectRandomTask}
         />
       </div>
@@ -121,10 +119,7 @@ export default function TaskManager() {
           <TaskList
             tasks={sortedAndFilteredTasks}
             onToggleStatus={toggleTaskStatus}
-            onEdit={(task) => {
-              setEditingTask(task)
-              setIsDialogOpen(true)
-            }}
+            onEdit={(task) => handleOpenDialog(task)}
             onDelete={deleteTask}
             focusedTaskId={focusedTaskId}
             filter={filter}
@@ -133,7 +128,7 @@ export default function TaskManager() {
         <TaskSidebar tasks={tasks} mascotMessage={mascotMessage} />
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+      <Dialog open={isDialogOpen} onOpenChange={handleCloseDialog}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{editingTask ? 'Editar Tarea' : 'Añadir Nueva Tarea'}</DialogTitle>

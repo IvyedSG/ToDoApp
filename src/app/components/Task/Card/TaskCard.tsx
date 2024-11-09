@@ -4,6 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
 import { Task, priorityColors } from '@/types/task'
+import { format } from 'date-fns'
+import { es } from 'date-fns/locale'
+
 
 interface TaskCardProps {
   task: Task
@@ -30,7 +33,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onToggleStatus, onEdit
             <Badge style={{ backgroundColor: priorityColors[task.priority] }} className="text-white">
               P{task.priority}
             </Badge>
-            <p className="text-sm text-muted-foreground">Fecha: {task.dueDate}</p>
+            <p className="text-sm text-muted-foreground">Fecha: {task.dueDate ? format(new Date(task.dueDate), 'PPP', { locale: es }) : 'Sin fecha'}</p>
           </div>
         </div>
       </div>
