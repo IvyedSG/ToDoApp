@@ -63,7 +63,7 @@ Sin embargo, ten en cuenta que los datos se perderán si el usuario limpia el al
 ## Instalación y Uso
 
 1. Clona el repositorio
-2. Instala las dependencias con `npm install`
+2. Instala las dependencias con `npm install --legacy-peer-deps`
 3. Ejecuta el servidor de desarrollo con `npm run dev`
 4. Abre `http://localhost:3000` en tu navegador
 
