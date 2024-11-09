@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gestor de Tareas
 
-## Getting Started
+Este es un gestor de tareas moderno y eficiente construido con Next.js 15, Shadcn y Tailwind CSS, utilizando los componentes de shadcn/ui.
 
-First, run the development server:
+## Características Principales
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Gestión de Tareas**
+   - Añadir nuevas tareas
+   - Editar tareas existentes
+   - Eliminar tareas
+   - Marcar tareas como completadas
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Organización de Tareas**
+   - Asignar prioridades a las tareas (Alta, Media, Baja, Sin prioridad)
+   - Establecer fechas de vencimiento para las tareas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Visualización y Filtrado**
+   - Ver todas las tareas
+   - Filtrar tareas por estado (Todas, Pendientes, Completadas)
+   - Búsqueda de tareas por título o descripción
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Interfaz de Usuario**
+   - Diseño responsive que se adapta a diferentes tamaños de pantalla
+   - Tema claro/oscuro con cambio dinámico
+   - Scroll suave para la lista de tareas y la barra lateral
 
-## Learn More
+5. **Funciones Especiales**
+   - "Tarea Sorpresa": Selecciona aleatoriamente una tarea pendiente para enfocarse
+   - Estadísticas de tareas: Muestra el progreso general y el número de tareas por prioridad
+   - Mascota motivacional: Muestra mensajes de ánimo periódicamente
 
-To learn more about Next.js, take a look at the following resources:
+6. **Persistencia de Datos**
+   - Almacenamiento local de tareas utilizando localStorage
+   - No requiere una base de datos externa
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+7. **Componentes Reutilizables**
+   - Estructura modular con componentes separados para diferentes funcionalidades
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+8. **Experiencia de Usuario Mejorada**
+   - Animaciones suaves para una experiencia más agradable
+   - Notificaciones toast para acciones importantes
+   - Diálogos modales para añadir/editar tareas y seleccionar tarea sorpresa
 
-## Deploy on Vercel
+## Tecnologías Utilizadas
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Next.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui (componentes reutilizables)
+- Lucide React (iconos)
+- date-fns (manejo de fechas)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Persistencia de Datos sin DB
+
+Este gestor de tareas utiliza `localStorage` para persistir los datos del usuario sin necesidad de una base de datos externa. Esto permite:
+
+- Almacenamiento local de tareas en el navegador del usuario
+- Carga rápida de datos sin necesidad de conexión a internet
+- Privacidad mejorada al mantener los datos en el dispositivo del usuario
+
+Sin embargo, ten en cuenta que los datos se perderán si el usuario limpia el almacenamiento local de su navegador.
+
+## Instalación y Uso
+
+1. Clona el repositorio
+2. Instala las dependencias con `npm install`
+3. Ejecuta el servidor de desarrollo con `npm run dev`
+4. Abre `http://localhost:3000` en tu navegador
+
