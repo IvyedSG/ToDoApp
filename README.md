@@ -1,6 +1,6 @@
 # Gestor de Tareas
 
-Este es un gestor de tareas moderno y eficiente construido con Next.js 15, Shadcn y Tailwind CSS, utilizando los componentes de shadcn/ui.
+Este es un gestor de tareas moderno y eficiente construido con React, Nextjs, Shadcn y Tailwind CSS, utilizando los componentes de shadcn/ui.
 
 ## Características Principales
 
@@ -43,9 +43,10 @@ Este es un gestor de tareas moderno y eficiente construido con Next.js 15, Shadc
 
 ## Tecnologías Utilizadas
 
-- Next.js
+- React
 - TypeScript
 - Tailwind CSS
+- Nextjs
 - shadcn/ui (componentes reutilizables)
 - Lucide React (iconos)
 - date-fns (manejo de fechas)
